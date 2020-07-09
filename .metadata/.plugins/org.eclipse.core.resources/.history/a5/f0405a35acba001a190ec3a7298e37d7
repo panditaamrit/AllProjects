@@ -1,0 +1,23 @@
+package Files;
+
+import java.util.HashMap;
+
+public class test {
+	
+	
+	public static void main(String args[])
+	{
+		
+		
+		HashMap<Integer, String> hmap= new HashMap<Integer, String>();
+		
+		hmap.put(1, "amrit");
+		hmap.put(1, "shashi");
+		String res=hmap.get(1);
+		System.out.println(res);
+		
+		
+	}
+	
+
+}

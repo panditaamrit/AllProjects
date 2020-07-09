@@ -1,0 +1,30 @@
+package Files;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class test {
+	
+	
+	public static void main(String args[])
+	{
+		ArrayList<String> al1=createSubstring("JAVA");
+		
+		//System.out.println(al1);
+		
+	}
+	
+	public static ArrayList<String> createSubstring(String s ){
+		ArrayList<String> al= new ArrayList<String>();
+		String[] subStrings=null;
+		
+		for (int i=0;i<s.length()-1;i++){
+			for (int j=i+1;j<=s.length();j++){
+				al.add( s.subSequence(i, j).toString());
+				
+				System.out.println(al);
+			}
+		}
+		return al;
+	}
+}

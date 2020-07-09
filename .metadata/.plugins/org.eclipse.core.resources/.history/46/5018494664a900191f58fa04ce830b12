@@ -1,0 +1,45 @@
+package Common;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class Table {
+	
+	
+	public static void tableoperations()
+	{
+		LaunchApp.launchapp("https://www.seleniumeasy.com/test/");
+		LaunchApp.driver.findElement(By.xpath(".//a[@class='dropdown-toggle' and contains(text(),'Table')]")).click();
+		LaunchApp.driver.findElement(By.xpath("(.//a[contains(text(),'Table Pagination')])[1]")).click();
+		
+		fetchdata();
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void fetchdata()
+	{
+		WebElement table = LaunchApp.driver.findElement(By.xpath(".//table[@class='table table-hover']"));
+		List<WebElement> tablecontent = LaunchApp.driver.findElements(By.xpath(".//table"));
+		System.out.println(tablecontent.size());
+		for (int i=0; i<tablecontent.size();i++){
+		      System.out.println("table" + tablecontent.get(i)); }
+		
+	}
+
+	public static void main(String args[])
+	{
+		
+		Table.tableoperations();
+		
+	}
+	
+	
+}

@@ -1,0 +1,98 @@
+package Common;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+
+
+
+public class dragndrop extends LaunchApp {
+	
+	
+	
+	public static void draganddrop(int finalval)
+	{
+		
+		LaunchApp.launchapp("https://www.seleniumeasy.com/test/");
+		driver.findElement(By.xpath(".//a[@class='dropdown-toggle' and contains(text(),'Progress Bars')]")).click();
+		driver.findElement(By.xpath("(.//a[@href='./drag-drop-range-sliders-demo.html'])[1]")).click();
+		
+		WebElement slider = driver.findElement(By.xpath(".//*[@name='range']"));
+		
+		WebElement currentpos=driver.findElement(By.xpath(".//output[@id='range']"));
+		
+		String current_val=currentpos.getText();
+		int current_val_int = Integer.parseInt(current_val);
+		
+		System.out.println("current value is"+current_val);
+		System.out.println("final value is"+finalval);
+		
+		int diff =finalval-current_val_int;
+		
+		for(int i=0;i<diff;i++)
+			
+		{
+			
+			slider.sendKeys(Keys.ARROW_RIGHT);
+			
+		}
+		
+		
+		
+		/*slider.sendKeys(Keys.ARROW_RIGHT);
+		slider.sendKeys(Keys.ARROW_RIGHT);
+		slider.sendKeys(Keys.ARROW_RIGHT);
+		slider.sendKeys(Keys.ARROW_RIGHT);
+		slider.sendKeys(Keys.ARROW_RIGHT);*/
+/*		//driver.findElement(By.xpath(".//input[@value='10']")).sendKeys("50");
+		 
+	  //    int slidersizewidth = slider.Size.Width;//640               
+	       Actions action = new Actions(driver);
+	       action.clickAndHold(slider);
+	       
+	       action.moveByOffset(40, 0).build().perform();*/
+		/*
+	       double minValue = Double.parseDouble(slider.getAttribute("min"));
+	       double maxValue = Double.parseDouble(slider.getAttribute("max"));
+	       int sliderH = slider.getSize().height;
+	      // int sliderW = slider.getSize().width;
+	       int sliderW=180;
+	       System.out.println(sliderH);
+	       System.out.println(sliderW);
+	       Actions action1 = new Actions(driver);
+	       action1.moveToElement(slider, (int) (80 * sliderW / (maxValue - minValue)), sliderH / 2).click().build().perform();
+		*/
+		
+		
+	      
+	       System.out.println(slider.getAttribute("value"));
+
+	       /*JavascriptExecutor js = (JavascriptExecutor)driver;
+	       js.executeScript("javascript:document.getElementById(\"range\").value=60;");
+
+	       System.out.println(slider.getAttribute("value"));*/
+
+		
+		//driver.findElement(By.xpath("(.//a[@href='./drag-drop-range-sliders-demo.html'])[1]")).click();
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	public static void main(String args[])
+	{
+		dragndrop.draganddrop(60);
+		
+		
+	}
+	
+	
+
+}

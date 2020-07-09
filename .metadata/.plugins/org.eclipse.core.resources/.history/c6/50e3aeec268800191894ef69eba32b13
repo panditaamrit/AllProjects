@@ -1,0 +1,41 @@
+package Common;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+
+public class AlertHandling extends LaunchApp {
+	
+	
+	public static void alerthandle()
+	{
+		
+		LaunchApp.launchapp("https://www.seleniumeasy.com/test/");
+		driver.findElement(By.xpath("(.//a[contains(text(),'Alerts & Modals')])[1]")).click();
+		driver.findElement(By.xpath("(.//a[contains(text(),'Bootstrap Modals')])[1]")).click();
+		driver.findElement(By.xpath("(.//a[contains(@class,'btn btn-primary')])[1]")).click();
+		driver.findElement(By.xpath("(.//a[@data-dismiss='modal'])[1]")).click();
+		driver.findElement(By.xpath("(.//a[contains(@class,'btn btn-primary')])[3]")).click();
+		driver.findElement(By.xpath(".//a[@href='#myModal2']")).click();
+		driver.findElement(By.xpath("(.//a[@onclick='history.go(0)'])[3]")).click();
+		/*Alert alert = driver.switchTo().alert();
+		String alertMessage= driver.switchTo().alert().getText();
+		alert.accept();	
+		System.out.println("message"+alertMessage);*/
+		/*driver.findElement(By.xpath("(.//a[contains(text(),'Alerts & Modals')])[1]")).click();
+		driver.findElement(By.xpath("(.//a[contains(text(),'Alerts & Modals')])[1]")).click();
+		driver.findElement(By.xpath("(.//a[contains(text(),'Alerts & Modals')])[1]")).click();
+		*/
+		
+		
+	}
+	
+	public static void main(String args[])
+	{
+		AlertHandling.alerthandle();
+		
+		
+	}
+	
+	
+
+}

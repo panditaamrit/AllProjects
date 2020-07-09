@@ -1,0 +1,42 @@
+package NewPackage;
+
+import java.awt.Robot;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.internal.seleniumemulation.KeyEvent;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+public class MyClass{
+
+
+   public static void main(String[] args)
+
+   {
+	   System.setProperty("webdriver.chrome.driver", "D:\\softwares\\drivers\\chromedriver.exe");
+       WebDriver driver = new ChromeDriver();
+
+       driver.get("http://google.com");
+       WebElement ele = driver.findElement(By.name("q"));
+       ele.sendKeys("zomato");
+       ele.submit();
+       WebElement z_link= driver.findElement(By.linkText("Best Restaurants in India - Zomato"));
+       z_link.click();
+       WebElement login = driver.findElement(By.id("signin-link"));
+       WebDriverWait wait = new WebDriverWait(driver,30);
+       wait.until(ExpectedConditions.presenceOfElementsLocatedBy(By.id("signin-link")));
+       login.click();
+       
+       System.out.println(driver.getTitle());
+
+       
+
+   }
+
+}
+

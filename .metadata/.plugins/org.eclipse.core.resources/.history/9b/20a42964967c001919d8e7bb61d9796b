@@ -1,0 +1,96 @@
+package Common;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class LaunchApp {
+	
+	public static WebDriver driver;
+	
+	public static void launchapp(String url)
+	{
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"//driver//chromedriver.exe");
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--start-maximized");
+
+		
+		driver= new ChromeDriver(co);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		try{
+		driver.get(url);
+		
+		
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+			System.out.println("Please check the URL");
+		}
+		
+		//String title =driver.getTitle();
+		//System.out.println(title);
+		
+	
+	}
+	
+	
+	
+	static void login(String username, String password)
+	{
+		
+		try{
+		WebElement u_name= driver.findElement(By.xpath(".//*[@name='username']"));
+		u_name.sendKeys(username);
+		WebElement pass= driver.findElement(By.xpath(".//*[@name='password']"));
+		pass.sendKeys(password);
+		driver.findElement(By.xpath(".//*[@class='btn btn-primary']")).click();
+		
+		}catch(Exception e)
+		
+		{
+			e.printStackTrace();
+			System.out.println("Please check the username and password");
+			
+		}
+		
+	}
+	
+	static void addQ()
+	{
+		
+		try{
+			System.out.println("question link start");
+			Thread.sleep(10000);
+		driver.findElement(By.xpath(".//div[contains(@class,'mat-tab-label-content') and contains(text(),'Question List')]")).click();
+		System.out.println("question link end");
+		
+		}catch(Exception e)
+		
+		{
+			e.printStackTrace();
+			System.out.println("Please check Questions link");
+			
+		}
+		
+	}
+	
+	public static void main(String args[])
+	{
+		
+		launchapp("https://jira.jaggedpeak.com");
+		//login("t1@mbbs.com","Admin@123");
+		//addQ();
+		
+		
+	}
+	
+	
+	
+	
+
+}

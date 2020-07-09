@@ -1,0 +1,13 @@
+package javatraining;
+
+public class Account_exception {
+	
+	
+	
+	
+	
+	
+	public void withdraw(int amt) throws 
+	
+
+}

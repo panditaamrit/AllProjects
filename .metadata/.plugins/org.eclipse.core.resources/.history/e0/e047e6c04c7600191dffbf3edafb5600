@@ -1,0 +1,20 @@
+package testcases;
+import Common.LaunchApp;
+
+public class democlass {
+	
+	
+	
+	
+	public static void main(String args[])
+	{
+			
+		LaunchApp.launchapp("https://www.seleniumeasy.com/test/");
+		
+		
+				
+		
+		
+	}
+
+}

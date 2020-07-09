@@ -1,0 +1,32 @@
+package Common;
+
+import org.openqa.selenium.By;
+
+public class Table {
+	
+	
+	public static void tableoperations()
+	{
+		LaunchApp.launchapp("https://www.seleniumeasy.com/test/");
+		LaunchApp.driver.findElement(By.xpath(".//a[@class='dropdown-toggle' and contains(text(),'Table')]")).click();
+		LaunchApp.driver.findElement(By.xpath("(.//a[contains(text(),'Table Pagination')])[1]")).click();
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+
+	public static void main(String args[])
+	{
+		
+		Table.tableoperations();
+		
+	}
+	
+	
+}

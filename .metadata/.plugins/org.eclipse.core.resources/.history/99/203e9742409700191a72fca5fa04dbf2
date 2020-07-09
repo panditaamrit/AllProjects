@@ -1,0 +1,119 @@
+package Common;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+public class DatePicker extends LaunchApp {
+	
+	
+	
+	public static void datepicker()
+	{
+	
+		try {
+			
+			
+			String date="15/06/2019";
+			Boolean value;
+			
+	LaunchApp.launchapp("https://www.seleniumeasy.com/test/");
+	driver.findElement(By.xpath(".//a[@class ='dropdown-toggle' and contains(text(),'Date pickers')]")).click();
+	driver.findElement(By.xpath("(.//a[@href='./bootstrap-date-picker-demo.html'])[1]")).click();
+	
+	
+	
+		Thread.sleep(2000);
+		
+		
+		
+		
+		
+		driver.findElement(By.xpath(".//input[@placeholder='dd/mm/yyyy']")).click();
+		
+		WebElement monthpicker= driver.findElement(By.xpath("(.//th[@class='datepicker-switch'])[1]"));
+		
+		String monthyear=monthpicker.getText();
+		if(monthyear.equals("June 2019"))
+			
+		{
+			
+			
+			
+			
+		}
+		
+		//'(.//th[@class='prev'])[1]'---previous xpath
+		//   (.//th[@class='datepicker-switch'])[1]------month year link
+		//to click on a previous date 
+		
+		
+		
+		
+		//to check if date passed is enabled or not:
+		/*value = isdatedisabled(date);
+		
+		System.out.println("boolean value is "+value);
+		
+		
+		if(!value)
+			System.out.println("date is disabled ");
+		
+		else
+			System.out.println("date is enabled ");*/
+			
+			
+		
+		/*driver.findElement(By.xpath(".//input[@placeholder='Start date']")).sendKeys("08/06/2019");
+		driver.findElement(By.xpath(".//input[@placeholder='End date']")).sendKeys("08/06/2019");
+		*/
+		
+		
+		
+		
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	
+	
+	}
+	
+	
+	
+	public static Boolean isdatedisabled(String date)
+	{
+		
+		
+		driver.findElement(By.xpath(".//input[@placeholder='dd/mm/yyyy']")).click();
+		WebElement ele = driver.findElement(By.xpath(".//*[.='15']"));
+		String elevalue = ele.getAttribute("class");
+		
+		System.out.println("element value is :"+elevalue);
+		
+		if(elevalue.equals("day"))
+		
+			
+			return true;
+		
+		else
+			return false;
+		
+		
+		
+		
+	}
+	
+	
+	public static void main(String args[])
+	{
+		
+		DatePicker.datepicker();
+		
+		
+		
+	}
+	
+	
+
+}

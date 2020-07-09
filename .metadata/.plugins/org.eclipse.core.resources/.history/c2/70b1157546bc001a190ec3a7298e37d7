@@ -1,0 +1,39 @@
+package Files;
+
+import java.util.HashMap;
+
+public class test {
+	
+	
+	public static void main(String args[])
+	{
+		
+		
+		HashMap<Integer, String> hmap= new HashMap<Integer, String>();
+		
+		String s1=hmap.put(1, "amrit");
+		
+		String s=hmap.put(1, "shashi");
+		String s3=hmap.put(1, "srgsrdh");
+		String res=hmap.get(1);
+		System.out.println(res);
+		
+		System.out.println(s3);
+		
+		
+		String str= "abc0";
+		String str1= new String("abc0");
+		
+		System.out.println(str==str1);
+		System.out.println(str.equals(str1));
+		
+		
+		str+="cyz";
+		System.out.println(str);
+		
+		
+		
+	}
+	
+
+}

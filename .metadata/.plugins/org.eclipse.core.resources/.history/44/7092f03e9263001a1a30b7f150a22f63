@@ -1,0 +1,111 @@
+package testcases;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import Common.LaunchApp;
+
+public class TableHandler {
+	
+	public static void TableHandlerpgm()
+	{
+		
+		try {
+		LaunchApp.launchapp("https://www.seleniumeasy.com/test/table-search-filter-demo.html");
+		
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try{
+			
+			List <WebElement> col=LaunchApp.driver.findElements(By.xpath(".//table[@class='table']/thead/tr/th/input"));
+			//System.out.println(col.size());
+			
+			List <WebElement> row=LaunchApp.driver.findElements(By.xpath(".//table[@class='table']/tbody/tr"));
+			//System.out.println(row.size());
+			
+			findvalue("#","3","First Name");
+			
+			
+			
+			
+			}catch(Exception e)
+			{e.printStackTrace();}
+		
+		
+	}
+	
+	public static void findvalue(String givencolname,String givencolvalue,String coltobefetched)
+	{
+	
+		List <WebElement> table= LaunchApp.driver.findElements(By.xpath(".//table[@class='table']"));	
+		List <WebElement> col=LaunchApp.driver.findElements(By.xpath(".//table[@class='table']/thead/tr/th/input"));
+		List <WebElement> row=LaunchApp.driver.findElements(By.xpath(".//table[@class='table']/tbody/tr"));
+		
+		
+		//Fetching index value of column to be fetched
+		int i=0;
+		while(i<col.size())
+		{
+			String currentcol=col.get(i).getAttribute("placeholder");
+			if(coltobefetched.equals(currentcol))
+				break;
+						
+			else
+				i++;
+		}
+		int indexofcol=i+1;
+		
+		
+		
+		//Fetching index value of row to be fetched
+		int j,k;
+		for(j=1;j<=row.size();j++)
+		{
+			for(k=1;k<=col.size();k++)
+			{
+				
+				String currentrowvalue=LaunchApp.driver.findElement(By.xpath(".//table[@class='table']/tbody/tr["+j+"]/td["+k+"]")).getText();
+				//System.out.println(currentrowvalue);
+				if(currentrowvalue.equals(givencolvalue))
+				{
+					int temp=j;
+					break;
+					
+			}
+			
+		}
+		
+		System.out.println(j);
+//		while(j<row.size())
+//		{
+//			
+//			LaunchApp.driver.findElements(By.xpath(".//table[@class='table']/tbody/tr"));
+//			
+//			System.out.println(row.get(j).getText());
+//			j++;
+//			
+//		}
+////	
+//		
+//		WebElement ele =LaunchApp.driver.findElement(By.xpath(".//table[@class='table']/tbody/tr["+2+"]/td["+indexofcol+"]"));
+//		System.out.println(ele.getText());
+		
+		
+	}
+	
+	public static void main(String args[])
+	{
+		
+		TableHandlerpgm();
+		
+		
+	}
+	
+
+}

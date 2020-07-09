@@ -1,0 +1,14 @@
+package javatraining;
+
+public class ReverseWithoutUsingReverseMethod {
+	
+	
+	public static void main(String [] args())
+	{
+		
+		
+		
+		
+	}
+
+}

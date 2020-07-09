@@ -1,0 +1,15 @@
+package Common;
+
+public class Table {
+	
+	
+	public static void tableoperations()
+	{
+		LaunchApp.launchapp("https://www.seleniumeasy.com/test/");
+		
+		
+		
+	}
+	
+
+}

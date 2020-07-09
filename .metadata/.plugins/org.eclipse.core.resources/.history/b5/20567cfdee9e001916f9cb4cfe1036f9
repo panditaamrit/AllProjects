@@ -1,0 +1,32 @@
+package javatraining;
+
+public class exceptionhandling {
+	
+	public static void main(String args[])
+	{
+		int no1,no2,result;
+		no1=10;
+		no2=0;
+		try {
+			
+			result=no1/no2;
+			System.out.println("result is"+result);
+			
+			
+		}catch(Exception e)
+		{
+			
+			System.out.println("division by zero not allowed");
+			
+			
+		}
+		
+		
+		
+		
+	}
+	
+	
+	
+
+}

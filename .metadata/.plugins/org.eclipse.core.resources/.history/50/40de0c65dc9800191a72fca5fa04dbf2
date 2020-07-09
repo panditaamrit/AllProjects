@@ -1,0 +1,145 @@
+package Common;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class DatePicker extends LaunchApp {
+	
+	
+	
+	public static void datepicker(String date)
+	{
+	
+		try {
+			
+			String dd=date.substring(0, 2);
+			String mm=date.substring(3, 6);
+			String yyyy=date.substring(7, 11);
+			System.out.println(dd+"/"+mm+"/"+yyyy);
+			LaunchApp.launchapp("https://www.seleniumeasy.com/test/");
+			driver.findElement(By.xpath(".//a[@class ='dropdown-toggle' and contains(text(),'Date pickers')]")).click();
+			driver.findElement(By.xpath("(.//a[@href='./bootstrap-date-picker-demo.html'])[1]")).click();
+			
+			dateselect(dd,mm,yyyy);
+			
+			Thread.sleep(1000);
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	}
+	
+	public static void dateselect(String dd,String mm,String yyyy)
+	{
+		
+		System.out.println("date passed"+dd+"/"+mm+"/"+yyyy);
+		try{
+		driver.findElement(By.xpath(".//input[@placeholder='dd/mm/yyyy']")).click();
+		driver.findElement(By.xpath("(.//th[@class='datepicker-switch'])[1]")).click();
+		
+		WebElement current_year= driver.findElement(By.xpath("(.//th[@colspan='5' and @class='datepicker-switch'])[2]"));
+		String cr_yr=current_year.getText();
+		System.out.println(cr_yr);
+		
+		verifyyear(yyyy,cr_yr,mm,dd);	
+		
+		
+		Thread.sleep(1000);
+		
+		}catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+	}
+	
+	public static void verifyyear(String yyyy,String cr_yr,String mm,String dd)
+	{
+		if(yyyy.equals(cr_yr))
+		{
+			System.out.println("years are same");
+			driver.findElement(By.xpath(".//span[@class='month' and contains(text(),'"+mm+"')]")).click();
+			Boolean value = isdatedisabled(dd);
+			clickondate(value,dd);
+						
+		}
+		
+		else
+		{
+			int diff=  Integer.parseInt(cr_yr)-Integer.parseInt(yyyy);
+			System.out.println("difference is "+diff);
+			
+			if(Integer.parseInt(cr_yr)>Integer.parseInt(yyyy))
+			{
+				for(int i=0;i<diff;i++)
+				{
+					driver.findElement(By.xpath("(.//th[@class='prev'])[2]")).click();
+								
+				
+				}
+			}
+			else if(Integer.parseInt(cr_yr)<Integer.parseInt(yyyy))
+			{
+				for(int i=0;i<diff;i++)
+				{
+					driver.findElement(By.xpath("(.//th[@class='next'])[1]")).click();
+								
+				
+				}				
+			}
+			
+			driver.findElement(By.xpath(".//span[@class='month' and contains(text(),'"+mm+"')]")).click();
+			Boolean value = isdatedisabled(dd);
+			clickondate(value,dd);
+		}
+		
+	}
+	
+	public static void clickondate(Boolean value, String dd)
+	{
+		if(!value)
+			System.out.println("date is disabled ");
+		
+		else
+			
+		{
+			
+			System.out.println("date is enabled ");
+			driver.findElement(By.xpath(".//td[@class='day' and contains(text(),'"+dd+"')]")).click();
+			
+		}
+		
+	}
+	public static Boolean isdatedisabled(String dd)
+	{
+		
+		WebElement ele = driver.findElement(By.xpath(".//*[.='"+dd+"']"));
+		String elevalue = ele.getAttribute("class");
+		
+		System.out.println("element value is :"+elevalue);
+		
+		if(elevalue.equals("day"))
+			return true;
+		
+		else
+			return false;
+		
+		}
+	
+	
+	public static void main(String args[])
+	{
+		
+		DatePicker.datepicker("20/Mar/2011");
+		DatePicker.dateselect("26","Jun","2019");
+		
+		
+		
+		
+		
+	}
+	
+	
+
+}

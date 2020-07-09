@@ -1,0 +1,110 @@
+package testcases;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import Common.LaunchApp;
+
+public class TableHandler {
+	
+	public static void TableHandlerpgm()
+	{
+		
+		try {
+		LaunchApp.launchapp("https://www.seleniumeasy.com/test/table-search-filter-demo.html");
+		
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try{
+			
+			List <WebElement> col=LaunchApp.driver.findElements(By.xpath(".//table[@class='table']/thead/tr/th/input"));
+					
+			List <WebElement> row=LaunchApp.driver.findElements(By.xpath(".//table[@class='table']/tbody/tr"));
+						
+			findvalue("#","5","First Name");
+			
+			
+			
+			
+			}catch(Exception e)
+			{e.printStackTrace();}
+		
+		
+	}
+	
+	public static void findvalue(String givencolname,String givencolvalue,String coltobefetched)
+	{
+	
+		List <WebElement> table= LaunchApp.driver.findElements(By.xpath(".//table[@class='table']"));	
+		List <WebElement> col=LaunchApp.driver.findElements(By.xpath(".//table[@class='table']/thead/tr/th/input"));
+		List <WebElement> row=LaunchApp.driver.findElements(By.xpath(".//table[@class='table']/tbody/tr"));
+		
+		
+		//Fetching index value of column to be fetched
+		int i=0;
+		while(i<col.size())
+		{
+			String currentcol=col.get(i).getAttribute("placeholder");
+			if(coltobefetched.equals(currentcol))
+				break;
+						
+			else
+				i++;
+		}
+		int indexofcoltobefetched=i+1;
+		System.out.println("index of column to be fetched"+indexofcoltobefetched);
+		//Fetching index value of given column
+		int t=0;
+		while(t<col.size())
+		{
+			String currentcol=col.get(t).getAttribute("placeholder");
+			if(givencolname.equals(currentcol))
+				break;
+						
+			else
+				t++;
+		}
+		int indexofgivencol=t+1;
+		System.out.println("index of given column"+indexofgivencol);
+		
+		
+		//Fetching index value of row to be fetched
+		
+		int r=1;
+		while(r<=row.size())
+		{
+			
+			String currentrowvalue=LaunchApp.driver.findElement(By.xpath(".//table[@class='table']/tbody/tr["+r+"]/td["+indexofgivencol+"]")).getText();
+			if(givencolvalue.equals(currentrowvalue))
+				break;
+						
+			else
+				r++;
+		}
+		int indexofrowtobefetched=r;
+		System.out.println("index of row to be fetched"+indexofrowtobefetched);
+
+		//Printing the desired values:
+		
+	String desiredcolvalue =LaunchApp.driver.findElement(By.xpath(".//table[@class='table']/tbody/tr["+indexofrowtobefetched+"]/td["+indexofcoltobefetched+"]")).getText();
+	System.out.println("Value of"+coltobefetched+"for"+givencolname+" "+givencolvalue+" is :"+desiredcolvalue);
+		
+		
+	}
+	
+	public static void main(String args[])
+	{
+		
+		TableHandlerpgm();
+		
+		
+	}
+	
+
+}

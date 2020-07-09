@@ -1,0 +1,42 @@
+package testcases;
+import org.openqa.selenium.By;
+
+import Common.LaunchApp;
+
+public class democlass extends LaunchApp {
+	
+	
+	
+	
+	public static void main(String args[])
+	{
+			
+		launchapp("https://www.seleniumeasy.com/test/");
+		
+		
+		/*-------SIMPLE FORM--------
+		driver.findElement(By.xpath(".//a[contains(text(),'Input Forms')] [@class='dropdown-toggle']")).click();	
+		driver.findElement(By.xpath("(.//a[contains(text(),'Simple Form Demo')])[1]")).click();		
+		driver.findElement(By.xpath("(.//a[contains(text(),'Input Forms')])[2]")).click();
+		driver.findElement(By.xpath("(.//a[contains(text(),'Simple Form Demo')])[2]")).click();
+		driver.findElement(By.xpath(".//input[@id='user-message']")).sendKeys("I Am Learning Selenium");
+		driver.findElement(By.xpath("(.//button[@class='btn btn-default'])[1]")).click();
+		driver.findElement(By.xpath(".//input[@id='sum1']")).sendKeys("50");
+		driver.findElement(By.xpath(".//input[@id='sum2']")).sendKeys("50");
+		driver.findElement(By.xpath("(.//button[@class='btn btn-default'])[2]")).click();
+	*/
+	
+		//------Check Box----------
+		
+		driver.findElement(By.xpath("(.//a[contains(text(),'Input Forms')])[2]")).click();
+		driver.findElement(By.xpath("(.//a[contains(text(),'Checkbox Demo')])[2]")).click();
+		driver.findElement(By.xpath(".//input[@id='isAgeSelected']")).click();
+		driver.findElement(By.xpath(".//input[@value='Check All']")).click();
+		driver.findElement(By.xpath(".//input[@value='Uncheck All']")).click();
+		
+		
+		
+	
+	}
+
+}

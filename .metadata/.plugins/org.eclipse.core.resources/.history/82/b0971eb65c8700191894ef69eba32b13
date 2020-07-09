@@ -1,0 +1,18 @@
+package Common;
+
+public class AlertHandling extends LaunchApp {
+	
+	
+	public static void alerthandle()
+	{
+		
+		LaunchApp.launchapp("https://www.seleniumeasy.com/test/");
+		
+		
+		
+		
+	}
+	
+	
+
+}
