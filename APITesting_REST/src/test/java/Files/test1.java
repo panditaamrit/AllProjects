@@ -11,9 +11,6 @@ public static void main(String args[]) {
 	File[] files=f.listFiles();
 	System.out.println(files.length);
 	
-	
-	
-	
 }
 
 }

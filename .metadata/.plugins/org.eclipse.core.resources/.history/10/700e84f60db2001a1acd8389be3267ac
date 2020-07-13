@@ -1,5 +1,0 @@
-baseURL=http://demo.guru99.com/V4/index.php
-username=mngr265195
-password=ebArEjy
-Chromepath=./Drivers\\chromedriver.exe
-IEpath=./Drivers\\IEDriverServer.exe
